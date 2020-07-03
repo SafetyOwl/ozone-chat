@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
 :root {
-	--dark-color-a: #667aff;
-	--dark-color-b: #7386ff;
-	--light-color: #e6e9ff;
+	--dark-color-a: #000;
+	--dark-color-b: #000;
+	--light-color: #fff;
 	--success-color: #5cb85c;
 	--error-color: #d9534f;
 }
@@ -17,7 +17,7 @@
 body {
 	font-family: 'Roboto', sans-serif;
 	font-size: 16px;
-	background: var(--light-color);
+	background: #000;
 	margin: 20px;
 }
 
@@ -36,7 +36,7 @@ img{
 .file{
 	cursor: pointer;
 	padding: 5px 15px;
-	background: #313036;
+	background: #69c7dc;
 	color: var(--dark-color-a);
 	border: 0;
 	font-size: 17px;
@@ -45,7 +45,7 @@ img{
 .btn {
 	cursor: pointer;
 	padding: 5px 15px;
-	background: var(--light-color);
+	background: #0dc3ec;
 	color: var(--dark-color-a);
 	border: 0;
 	font-size: 17px;
@@ -54,15 +54,19 @@ img{
 /* Chat Page */
 
 .chat-container {
-	max-width: 1100px;
-	background: #fff;
-	margin: 30px auto;
+	background: #000;
+	padding: 1%;
+	position: ;
+	bottom: 0;
+	width: 100%;
+	box-sizing: border-box;
 	overflow: hidden;
+	margin: 30px auto;
 }
 
 .chat-header {
 	background: var(--dark-color-a);
-	color: #fff;
+	color: #0dc3ec;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
 	padding: 15px;
@@ -78,7 +82,7 @@ img{
 
 .chat-sidebar {
 	background: var(--dark-color-b);
-	color: #fff;
+	color: #0dc3ec;
 	padding: 20px 20px 60px;
 	overflow-y: scroll;
 }
@@ -102,12 +106,13 @@ img{
 	padding: 30px;
 	max-height: 500px;
 	overflow-y: scroll;
+	background: #fff;
 }
 
 .chat-messages .message {
 	padding: 10px;
 	margin-bottom: 15px;
-	background-color: var(--light-color);
+	background-color: #0dc3ec;
 	border-radius: 5px;
 }
 
@@ -120,7 +125,7 @@ img{
 }
 
 .chat-messages .message .meta span {
-	color: #777;
+	color: #fff;
 }
 
 .chat-form-container {
@@ -139,15 +144,19 @@ img{
 	flex: 1;
 }
 
+.file{
+	color: #000;
+}
+
 /* Join Page */
 .join-container {
-	max-width: 500px;
+	max-width: 100%;
 	margin: 80px auto;
-	color: #fff;
+	color: #0dc3ec;
 }
 
 .join-header {
-	text-align: center;
+	text-align: left;
 	padding: 20px;
 	background: var(--dark-color-a);
 	border-top-left-radius: 5px;
