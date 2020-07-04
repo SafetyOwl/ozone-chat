@@ -29,6 +29,8 @@ socket.on('message', message => {
 });
 
 // Message submit
+/* Obtain element values in the form
+msg is a type text input in chat.html */
 chatForm.addEventListener('submit', e => {
   e.preventDefault();
 
@@ -44,6 +46,7 @@ chatForm.addEventListener('submit', e => {
 });
 
 // Output message to DOM
+/* get the element and put it in the DOM */
 function outputMessage(message) {
   const div = document.createElement('div');
   div.classList.add('message');

@@ -19,7 +19,21 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 const botName = 'Bot';
 
-// Run when client connects
+/* Run when client connects
+  Socket function is used to emit and broadcast when a users connects
+  this function send a welcome message to the user that connects to the server, and
+  broadcast to other users that a user has connected
+  
+  Arguments
+  socket.id *type:string* (value assigned by socket.io)
+  (A unique identifier for the session)
+  username  *type:string* (not default value)
+  (is the name of the user)
+  botname   *type:string* (Default value: Bot)
+  (is the name of the bot)
+  room      *type:string* (Default value: room1, room2, room3, room4)
+  (that are the rooms available)
+  */
 io.on('connection', socket => {
   socket.on('joinRoom', ({ username, room }) => {
     const user = userJoin(socket.id, username, room);
@@ -27,14 +41,14 @@ io.on('connection', socket => {
     socket.join(user.room);
 
     // Welcome current user
-    socket.emit('message', formatMessage(botName, 'Bienvenido al chat!'));
+    socket.emit('message', formatMessage(botName, 'Welcome to the Ozone Chat!'));
 
     // Broadcast when a user connects
     socket.broadcast
       .to(user.room)
       .emit(
         'message',
-        formatMessage(botName, `${user.username} se ha unido al chat`)
+        formatMessage(botName, `${user.username} has joined to the chat.`)
       );
 
     // Send users and room info
@@ -44,7 +58,17 @@ io.on('connection', socket => {
     });
   });
 
-  // Listen for chatMessage
+
+  /* Listen for chatMessage 
+  This functions catch message from main.js and emit it to the users in the room
+  Arguments
+  
+  socket.id *type:string* (value assigned by socket.io)
+  (A unique identifier for the session)
+  username  *type:string* (not default value)
+  (is the name of the user)
+  message   *type:string* (not default value, required input)
+  (that are the rooms available) */  
   socket.on('chatMessage', msg => {
     const user = getCurrentUser(socket.id);
 
@@ -78,4 +102,4 @@ io.on('connection', socket => {
 
 const PORT = process.env.PORT || 3000;
 
-server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+server.listen(PORT, console.log('servidor corriendo en el puerto 3000'));
