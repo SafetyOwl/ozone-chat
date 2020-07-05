@@ -80,7 +80,7 @@ io.on('connection', socket => {
   */
   socket.on('user image',function(image){
       const user = getCurrentUser(socket.id);
-      io.to(user.room).emit('addimage', `Imagen compartida por ${user.username}: `, image);
+      io.to(user.room).emit('addimage', `Image shared by ${user.username}: `, image);
   });
 
   // Runs when client disconnects
@@ -91,7 +91,7 @@ io.on('connection', socket => {
     if (user) {
       io.to(user.room).emit(
         'message',
-        formatMessage(botName, `${user.username} ha abandonado el chat`)
+        formatMessage(botName, `${user.username} has left the chat`)
       );
 
       // Send users and room info
@@ -105,4 +105,4 @@ io.on('connection', socket => {
 
 const PORT = process.env.PORT || 3000;
 
-server.listen(PORT, console.log('servidor corriendo en el puerto 3000'));
+server.listen(PORT, console.log('server running on port : 3000'));
