@@ -20,7 +20,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 const botName = 'Bot';
 
 /* Run when client connects
-  Socket function is used to emit and broadcast when a users connects
+  Socket function is used to assing users to rooms and emit and broadcast when a users connects
   this function send a welcome message to the user that connects to the server, and
   broadcast to other users that a user has connected
   
