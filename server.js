@@ -75,7 +75,9 @@ io.on('connection', socket => {
     io.to(user.room).emit('message', formatMessage(user.username, msg));
   });
   
-  //Socket imagen
+  //Socket image
+  /* This function cacth the image and emit it to all users in the room
+  */
   socket.on('user image',function(image){
       const user = getCurrentUser(socket.id);
       io.to(user.room).emit('addimage', `Imagen compartida por ${user.username}: `, image);
@@ -85,6 +87,7 @@ io.on('connection', socket => {
   socket.on('disconnect', () => {
     const user = userLeave(socket.id);
 
+    // emits message to other users, that "user" has left the chat
     if (user) {
       io.to(user.room).emit(
         'message',

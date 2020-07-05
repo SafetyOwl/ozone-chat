@@ -30,7 +30,10 @@ socket.on('message', message => {
 
 // Message submit
 /* Obtain element values in the form
-msg is a type text input in chat.html */
+msg is a type text input in chat.html 
+
+arguments
+msg *type:string* (no default value) */
 chatForm.addEventListener('submit', e => {
   e.preventDefault();
 
@@ -69,6 +72,7 @@ function outputUsers(users) {
   `;
 }
 
+//add image to the DOM
 socket.on('addimage', function(msg,base64image,message){
   $('.chat-messages')
   .append(
@@ -77,14 +81,17 @@ socket.on('addimage', function(msg,base64image,message){
   );
 });
 
+/* function image send 
 
+  arguments
+  file *array* (no default value)*/
 $(function(){
-  //cuando este cargada la pagina completamente
+  //when the page loads completely
   $("#imagefile").on('change',function(e){
       var file = e.originalEvent.target.files[0];
       var reader = new FileReader();
       reader.onload = function(evt){
-          //enviaremos la imagen resultante
+          //send the image
           socket.emit('user image', evt.target.result);
       };
       reader.readAsDataURL(file);
