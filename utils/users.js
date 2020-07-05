@@ -1,6 +1,8 @@
 const users = [];
 
 // Join user to chat
+/* arguments
+  user *type:text* is an array that save id, username and rooms.*/
 function userJoin(id, username, room) {
   const user = { id, username, room };
 
