@@ -72,6 +72,11 @@ function outputUsers(users) {
   `;
 }
 
+//private messages
+socket.on('mensajePrivado', function(message){
+  console.log('mensaje privado:', message);
+});
+
 //add image to the DOM
 socket.on('addimage', function(msg,base64image,message){
   $('.chat-messages')

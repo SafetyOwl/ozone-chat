@@ -101,8 +101,38 @@ io.on('connection', socket => {
       });
     }
   });
+
+  //private message
+  socket.on('mensajePrivado', message =>{
+    let user = getCurrentUser(socket.id);
+    socket.broadcast.to(message.para).emit('mensajePrivado', formatMessage(user.username, message));
+  })
 });
 
 const PORT = process.env.PORT || 3000;
 
 server.listen(PORT, console.log('server running on port : 3000'));
+
+module.exports = {
+    entry: {
+        main: './public/js/main.js'
+    },
+    output: {
+        filename: '[name].main.js',
+        path: path.resolve('./public/js', 'main/js'),
+    },
+    module: {
+        rules: [
+            {
+                test: /\.jsx?$/,
+                exclude: /(node_modules)/,
+                use: {
+                    loader: "babel-loader",
+                    options: {
+                        presets: ['@babel/preset-react']
+                    }
+                }
+            }
+        ]
+    }
+}; 
