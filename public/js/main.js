@@ -8,6 +8,8 @@ const { username, room } = Qs.parse(location.search, {
   ignoreQueryPrefix: true
 });
 
+const socket = io();
+
 module.exports = {
     entry: {
         main: './public/js/main.js'
@@ -31,6 +33,7 @@ module.exports = {
         ]
     }
 }; 
+
 // Join chatroom
 socket.emit('joinRoom', { username, room });
 
