@@ -8,8 +8,29 @@ const { username, room } = Qs.parse(location.search, {
   ignoreQueryPrefix: true
 });
 
-const socket = io();
-
+module.exports = {
+    entry: {
+        main: './public/js/main.js'
+    },
+    output: {
+        filename: '[name].main.js',
+        path: path.resolve('./public/js', 'main/js'),
+    },
+    module: {
+        rules: [
+            {
+                test: /\.jsx?$/,
+                exclude: /(node_modules)/,
+                use: {
+                    loader: "babel-loader",
+                    options: {
+                        presets: ['@babel/preset-react']
+                    }
+                }
+            }
+        ]
+    }
+}; 
 // Join chatroom
 socket.emit('joinRoom', { username, room });
 
